@@ -15,16 +15,16 @@ project_name: piecewise
 
 # Information about the fork and branch to deploy.
 # Specify any valid git remote (typically a github username)
-remote: https://github.com/opentechinstitute
+remote: https://github.com/critzo
 
 # Specify any ref (eg. branch, tag, SHA) to be deployed. This ref must be
 # pushed to the remote git_repo before it can be deployed.
-piecewise_commit: master
+piecewise_commit: stevenscounty
 
 git_repo: "{{ remote }}/{{ project_name }}.git"
 
 # BigQuery Project Number of Project Name
-bigquery_project_num: <big query project name/number>
+bigquery_project_num: mlab-sandbox
 
 # Your Postgres database name and user can be customized if necessary.  
 database_name: piecewise
@@ -40,7 +40,7 @@ database_user_group: postgres
 #
 # For production installs we usually use the server's fqdn once we have it configured
 # in DNS.  
-site_fqdn: ""
+site_fqdn: "52.183.27.58"
 
 # The variables below will be used to generate SSL certificates. When deploying to 
 # development hosts, the country, state and city are used by open SSL to generate a 
@@ -51,11 +51,11 @@ site_fqdn: ""
 # When deploying to a production host. The site_contact and the site_fqdn variables are 
 # used by EFF's certbot tool to automate the request for valid SSL certificates from 
 # the LetsEncrypt CA.
-site_contact: <email>
-site_country: <2 letter country abbreviation>
-site_state: <state name>
-site_city: <city name>
-site_ou: <organization name>
+site_contact: TSellars@stevenscountywa.gov
+site_country: US
+site_state: WA
+site_city: Colville
+site_ou: Stevens County Government
 
 # Path for self-signed certificates to be used in development deployments
 self_signed_ssl_cert_path: /etc/ssl/certs/selfsigned.{{ site_fqdn }}.cert
@@ -95,7 +95,7 @@ site_path: "{{ base_path }}/piecewise_web"
 # M-Lab data in the folder: /local_customizations/geofiles/
 
 # Add the name of the shapefile file to be used.
-shape_file: CENSUS10_blkgrp_WGS.shp
+shape_file: cb_2015_53_bg_500k.shp
 
 # The variables below are used when importing your shapefile into postgres.
 #
@@ -104,11 +104,11 @@ shape_file: CENSUS10_blkgrp_WGS.shp
 # 'shape_projection' specifies the SRS reprojection/transform to use for this shapefile.
 # 'geometry_type' specifies the geometry type for this layer
 # 'layer_name' is the name you wish to be used for this shapefile layer in postgres
-dbKey: geoid10
+dbKey: geoid
 dbKeyDataType: string
 shape_projection: "EPSG:4326"
 geometry_type: MultiPolygon
-layer_name: seattle_blkgrpce10
+layer_name: wa_censusblocks
 
 # The variables below define the aggregation name and table name for aggregate statistics
 aggregation_name: "by_census_block"
@@ -117,12 +117,12 @@ aggregation_stats_table_name: "block_statistics"
 # Define the latitude and longitude for the southwest and northeast corners of a bounding 
 # box, defining the region where you are interested in pulling M-Lab NDT data.
 map_coordinate_southwest: 
-  lat: 47.3630134401
-  lon: -122.6733398438
+  lat: 47.7909
+  lon: -118.3991
 
 map_coordinate_northeast: 
-  lat: 47.8076208172
-  lon: -121.9509887695
+  lat: 49.0007
+  lon: -117.4325
 
 # The four variable below are derived from your bounding box coordinates above.
 map_bounding_box: "{{ map_coordinate_southwest.lon }},{{ map_coordinate_southwest.lat }},{{ map_coordinate_northeast.lon }},{{ map_coordinate_northeast.lat }}"
@@ -134,8 +134,8 @@ map_bounding_box: "{{ map_coordinate_southwest.lon }},{{ map_coordinate_southwes
 #
 # During development, we usually set a smaller date range to enable faster ingesting
 # of M-Lab data during the final steps of deployment.
-map_data_start_date: "Jan 1 2017 00:00:00"
-map_data_end_date: "Mar 13 2017 00:00:00"
+map_data_start_date: "Jan 1 2014 00:00:00"
+map_data_end_date: "Dec 31 2050 00:00:00"
 
 ###
 # WEBSITE MAP INFORMATION
@@ -146,11 +146,11 @@ map_data_end_date: "Mar 13 2017 00:00:00"
 # be created from the shapefile you defined above. 
 # Save your topojson file into the folder /local_customizations/geofiles
 # and then enter its filename here.
-topojson_file: seattle_census10_blockgroups.topojson
+topojson_file: wa_censusblocks.topojson
 
 # 'geoKey' is the field name in your topojson file which corresponds to the unique key 
 # in your shapefile, and is typically the same as dbKey, but in CAPITAL LETTERS.
-geoKey: GEOID10
+geoKey: GEOID
 
 # 'mapscript_start_year' is the first year you are interested in showing in the year dropdown
 # 'mapscript_start_month' lets you define the order of months in the UI.
@@ -166,7 +166,7 @@ mapscript_base_layer: osm
 # If you would like to customize the OSM base layer API url, for example if you
 # are hosting custom maps and tiles on your own tile server, update the variable below.
 # The default OSM url is provided.
-mapscript_osm_api_url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+mapscript_osm_api_url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 
 # If you are using a Mapbox base layer, set the API URL for your Mapbox tiles here.
 mapscript_mapbox_api_url: ""
@@ -224,12 +224,36 @@ form_fields:
         1:
           default: "------"
         2:
-          comcast: "Comcast"
+          airpipe-wireless: "AirPipe Wireless"
         3:
-          centurylink: "CenturyLink"
+          att: "AT&amp;T"
         4:
-          wave: "Wave"
+          century-link: "CenturyLink"
         5:
+          comcast: "Comcast"
+        6:
+          charter: "Charter"
+        7:
+          dash-wireless: "Dash Wireless"
+        8:
+          desert-winds-wireless: "Desert Winds Wireless"
+        9:
+          dish-net: "DishNet"
+        10:
+          ecliptixnet-wireless: "Ecliptixnet Wireless"
+        11:
+          excede-wild-blue: "Excede/WildBlue"
+        12:
+          hughes-net: "HughesNet"
+        13:
+          ptera-wireless: "Ptera Wireless"
+        14:
+          seymour-channels: "Seymour Channels"
+        15:
+          startouch: "Startouch"
+        16:
+          verizon: "Verizon"
+        17:
           other: "Other"
       required: yes
   2:
@@ -276,8 +300,12 @@ form_fields:
         5:
           bet_75_100: "$75-$100"
         6:
-          above_100: "$100 +"
+          bet_100_150: "$100-$150"
         7:
+          bet_150_200: "$150-$200"
+        8:
+          above_200: "$200 or more"
+        9:
           dont_know: "Don't know"
       required: yes
   5:
@@ -305,20 +333,20 @@ form_fields:
 # The section below allows you to customize various text and other elements of the website
 
 # 'site_name' is used as the HTML page title element
-site_name: "Seattle Broadband Map"
+site_name: "Stevens County, WA Broadband Map"
 
 # 'intro_text' defines the heading text that precedes the HTML survey form, provided to users
 # before they may take the test.
 intro_text: >
-  The City of Seattle is collecting information from residents about broadband 
-  experiences across the City. To contribute, please answer the following 
+  Stevens County is collecting information from residents about broadband 
+  experiences across the county. To contribute, please answer the following 
   questions and then take our Broadband Speed Test:
 
 # 'consent_message' defines the message displayed next to the consent checkbox
 consent_message: >
-  I understand that the data collected from this test will be anonymized and aggregated 
-  for publication to the Broadband Map and 
-  <a href="https://data.seattle.gov" target="_blank">Data.Seattle.Gov</a>.
+  I understand that the data collected from this test will be anonymized and 
+  aggregated for publication to the Stevens County Broadband Map, and may be 
+  published to regional and/or Washington state open data sites.
 
 # The variables below define the messages and labels provided to the user before and 
 # after the test.
@@ -337,9 +365,9 @@ thank_you_message: >
 
 # 'next_action_' variables define the action items present to the user after they run the test.
 next_action_message: "What do you want to do next?"
-next_action_show_map_text: "View all results to-date on a map of Seattle"
+next_action_show_map_text: "View all results to-date on a map of Eastern Washington State"
 next_action_learn_about_text: "Learn more about this test and how to improve your speed"
-next_action_learn_about_link: "https://www.seattle.gov/broadband-speed-test-about"
+next_action_learn_about_link: "http://www.co.stevens.wa.us/"
 next_action_social_share_text: "Share this test with your friends, colleagues, and neighbors"
 
 # 'social_share_' variables define the links to be used for social sharing actions.
@@ -347,13 +375,13 @@ next_action_social_share_text: "Share this test with your friends, colleagues, a
 # If you set any of these to 'none', they will be excluded from the website.
 # If you don't want any social share options, set all of the items below to 'none'
 # and also set 'next_action_social_share_text' to 'none' (without quotes) above.
-social_share_twitter: "http://twitter.com/share?url=http://www.seattle.gov/broadband-speed-test&text=I%20tested%20my%20Internet%20speeds%20with%20the%20Seattle%20Broadband%20Speed%20Test&via=CivicTechSea"
-social_share_gplus: "https://plus.google.com/share?url=http://www.seattle.gov/broadband-speed-test"
-social_share_facebook: "http://www.facebook.com/sharer/sharer.php?u=http://www.seattle.gov/broadband-speed-test"
-social_share_stumbleupon: "http://www.stumbleupon.com/submit?url=http://www.seattle.gov/broadband-speed-test&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Seattle%20Broadband%20Speed%20Test"
-social_share_reddit: "http://reddit.com/submit?url=http://www.seattle.gov/broadband-speed-test&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Seattle%20Broadband%20Speed%20Test"
-social_share_linkedin: "http://www.linkedin.com/shareArticle?url=http://www.seattle.gov/broadband-speed-test&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Seattle%20Broadband%20Speed%20Test&summary=I%20tested%20my%20Internet%20speeds%20with%20the%20Seattle%20Broadband%20Speed%20Test&source=http://www.seattle.gov/broadband-speed-test"
-social_share_email: "mailto:?subject=Take%20the%20Seattle%20Broadband%20Speed Test&body=I%20just%20took%20the%20Seattle%20Broadband%20Speed%20Test,%20and%20you%20should%20too!%20Take%20the%20test%20and%20contribute%20to%20a%20map%20of%20broadband%20speeds%20across%20the%20city. http://www.seattle.gov/broadband-speed-test"
+social_share_twitter: "http://twitter.com/share?url=http://stevenscountybroadband.net&text=I%20tested%20my%20Internet%20speeds%20with%20the%20Stevens%20County%20Broadband%20Speed%20Test"
+social_share_gplus: "https://plus.google.com/share?url=http://stevenscountybroadband.net/"
+social_share_facebook: "http://www.facebook.com/sharer/sharer.php?u=http://stevenscountybroadband.net/"
+social_share_stumbleupon: "http://www.stumbleupon.com/submit?url=http://stevenscountybroadband.net/&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Stevens%20County%20Broadband%20Speed%20Test"
+social_share_reddit: "http://reddit.com/submit?url=http://stevenscountybroadband.net/&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Stevens%20County%20Broadband%20Speed%20Test"
+social_share_linkedin: "http://www.linkedin.com/shareArticle?url=http://stevenscountybroadband.net/&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Stevens%20County%20Broadband%20Speed%20Test&summary=I%20tested%20my%20Internet%20speeds%20with%20the%20Stevens%20County%20Broadband%20Speed%20Test&source=http://www.co.stevens.wa.us/"
+social_share_email: "mailto:?subject=Take%20the%20Stevens%20County%20Broadband%20Speed Test&body=I%20just%20took%20the%20Stevens%20County%20Broadband%20Speed%20Test,%20and%20you%20should%20too!%20Take%20the%20test%20and%20contribute%20to%20a%20map%20of%20broadband%20speeds%20across%20the%20county. http://stevenscountybroadband.net/"
 
 # 'icon_' and 'mapview_icon_' variables define the text accompanying the icons in the user interface
 #
@@ -364,12 +392,12 @@ icon_browse_label: "Browse the Broadband Map"
 icon_browse_alt_text: "Browse the Broadband Map"
 icon_learn_label: "Learn More"
 icon_learn_alt_text: "Learn more about this test."
-icon_learn_link: "http://www.seattle.gov/broadband/broadband-speed-test/about-the-broadband-speed-test"
+icon_learn_link: "http://www.co.stevens.wa.us/"
 
 # 'mapview_icon_' variables set the text values and '?' link on the mapview display
 mapview_icon_test_alt_text: "Take the Speed Test"
 mapview_icon_learn_alt_text: "Learn more about this test."
-mapview_icon_learn_link: "http://www.seattle.gov/broadband/broadband-speed-test/about-the-broadband-speed-test"
+mapview_icon_learn_link: "http://www.co.stevens.wa.us/"
 
 # The two varables below control where Leaflet map controls are placed in the UI. 
 # They should remain unchanged for now. More work on positioning for Leaflet elements will follow.
