@@ -177,7 +177,7 @@ mapscript_mapbox_api_url: ""
 mapscript_min_data_points: 5
 
 # 'mapscript_zoom_level' sets the initial zoom level for the map
-mapscript_zoom_level: 11
+mapscript_zoom_level: 8
 
 # These variables name the map layers on the website. 'mapscript_layer_name' is used as 
 # a layer name in the JavaScript code, and 'mapscript_layer_name_pretty' is used in the 
