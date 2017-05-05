@@ -177,7 +177,7 @@ mapscript_mapbox_api_url: ""
 mapscript_min_data_points: 5
 
 # 'mapscript_zoom_level' sets the initial zoom level for the map
-mapscript_zoom_level: 8
+mapscript_zoom_level: 9
 
 # These variables name the map layers on the website. 'mapscript_layer_name' is used as 
 # a layer name in the JavaScript code, and 'mapscript_layer_name_pretty' is used in the 
@@ -219,7 +219,7 @@ form_fields:
       db_type: String
       name: isp_user
       id: isp_user
-      text: "Who is your Internet Serice Provider?"
+      text: "Who is your Internet Service Provider?"
       options:
         1:
           default: "------"
@@ -230,9 +230,9 @@ form_fields:
         4:
           century-link: "CenturyLink"
         5:
-          comcast: "Comcast"
+          comcast: "Comcast / Xfinity"
         6:
-          charter: "Charter"
+          charter: "Charter / Spectrum"
         7:
           dash-wireless: "Dash Wireless"
         8:
@@ -367,7 +367,7 @@ thank_you_message: >
 next_action_message: "What do you want to do next?"
 next_action_show_map_text: "View all results to-date on a map of Eastern Washington State"
 next_action_learn_about_text: "Learn more about this test and how to improve your speed"
-next_action_learn_about_link: "http://www.co.stevens.wa.us/"
+next_action_learn_about_link: "http://www.stevenscountywa.gov/speedtest/speedtest_faq.html"
 next_action_social_share_text: "Share this test with your friends, colleagues, and neighbors"
 
 # 'social_share_' variables define the links to be used for social sharing actions.
@@ -375,13 +375,13 @@ next_action_social_share_text: "Share this test with your friends, colleagues, a
 # If you set any of these to 'none', they will be excluded from the website.
 # If you don't want any social share options, set all of the items below to 'none'
 # and also set 'next_action_social_share_text' to 'none' (without quotes) above.
-social_share_twitter: "http://twitter.com/share?url=http://stevenscountybroadband.net&text=I%20tested%20my%20Internet%20speeds%20with%20the%20Stevens%20County%20Broadband%20Speed%20Test"
-social_share_gplus: "https://plus.google.com/share?url=http://stevenscountybroadband.net/"
-social_share_facebook: "http://www.facebook.com/sharer/sharer.php?u=http://stevenscountybroadband.net/"
-social_share_stumbleupon: "http://www.stumbleupon.com/submit?url=http://stevenscountybroadband.net/&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Stevens%20County%20Broadband%20Speed%20Test"
-social_share_reddit: "http://reddit.com/submit?url=http://stevenscountybroadband.net/&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Stevens%20County%20Broadband%20Speed%20Test"
-social_share_linkedin: "http://www.linkedin.com/shareArticle?url=http://stevenscountybroadband.net/&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Stevens%20County%20Broadband%20Speed%20Test&summary=I%20tested%20my%20Internet%20speeds%20with%20the%20Stevens%20County%20Broadband%20Speed%20Test&source=http://www.co.stevens.wa.us/"
-social_share_email: "mailto:?subject=Take%20the%20Stevens%20County%20Broadband%20Speed Test&body=I%20just%20took%20the%20Stevens%20County%20Broadband%20Speed%20Test,%20and%20you%20should%20too!%20Take%20the%20test%20and%20contribute%20to%20a%20map%20of%20broadband%20speeds%20across%20the%20county. http://stevenscountybroadband.net/"
+social_share_twitter: "http://twitter.com/share?url=https://stevenscountybroadband.net&text=I%20tested%20my%20Internet%20speeds%20with%20the%20Stevens%20County%20Broadband%20Speed%20Test"
+social_share_gplus: "https://plus.google.com/share?url=https://stevenscountybroadband.net/"
+social_share_facebook: "http://www.facebook.com/sharer/sharer.php?u=https://stevenscountybroadband.net/"
+social_share_stumbleupon: "http://www.stumbleupon.com/submit?url=https://stevenscountybroadband.net/&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Stevens%20County%20Broadband%20Speed%20Test"
+social_share_reddit: "http://reddit.com/submit?url=https://stevenscountybroadband.net/&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Stevens%20County%20Broadband%20Speed%20Test"
+social_share_linkedin: "http://www.linkedin.com/shareArticle?url=https://stevenscountybroadband.net/&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Stevens%20County%20Broadband%20Speed%20Test&summary=I%20tested%20my%20Internet%20speeds%20with%20the%20Stevens%20County%20Broadband%20Speed%20Test&source=http://www.co.stevens.wa.us/"
+social_share_email: "mailto:?subject=Take%20the%20Stevens%20County%20Broadband%20Speed Test&body=I%20just%20took%20the%20Stevens%20County%20Broadband%20Speed%20Test,%20and%20you%20should%20too!%20Take%20the%20test%20and%20contribute%20to%20a%20map%20of%20broadband%20speeds%20across%20the%20county. https://stevenscountybroadband.net/"
 
 # 'icon_' and 'mapview_icon_' variables define the text accompanying the icons in the user interface
 #
@@ -392,12 +392,12 @@ icon_browse_label: "Browse the Broadband Map"
 icon_browse_alt_text: "Browse the Broadband Map"
 icon_learn_label: "Learn More"
 icon_learn_alt_text: "Learn more about this test."
-icon_learn_link: "http://www.co.stevens.wa.us/"
+icon_learn_link: "http://www.stevenscountywa.gov/speedtest/speedtest_faq.html"
 
 # 'mapview_icon_' variables set the text values and '?' link on the mapview display
 mapview_icon_test_alt_text: "Take the Speed Test"
 mapview_icon_learn_alt_text: "Learn more about this test."
-mapview_icon_learn_link: "http://www.co.stevens.wa.us/"
+mapview_icon_learn_link: "http://www.stevenscountywa.gov/speedtest/speedtest_faq.html"
 
 # The two varables below control where Leaflet map controls are placed in the UI. 
 # They should remain unchanged for now. More work on positioning for Leaflet elements will follow.
